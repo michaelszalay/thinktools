@@ -4,6 +4,8 @@ import com.szalay.thinktools.model.DataProperty;
 import com.szalay.thinktools.model.Factor;
 import com.szalay.thinktools.model.Individual;
 import com.szalay.thinktools.ui.ApplicationDocument;
+import com.szalay.thinktools.ui.TextUtil;
+import com.szalay.thinktools.ui.UIUtil;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ButtonType;
@@ -25,6 +27,11 @@ final class AddRowAction implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+
+        if (doc.getProject().getFactors().isEmpty()) {
+            UIUtil.showError(TextUtil.getText("error"), TextUtil.getText("factorsErrorMessage"));
+            return;
+        }
 
         final AddRowDialog dialog = new AddRowDialog(doc);
         final Optional<ButtonType> buttonType = dialog.showAndWait();

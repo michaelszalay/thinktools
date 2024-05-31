@@ -113,10 +113,6 @@ final class ImportDatabaseDialog extends Dialog<ButtonType> {
         grid.add(overrideCheckbox, 1, 5);
 
         final List<Factor> factors = document.getProject().getFactors();
-        if (factors.isEmpty()) {
-            UIUtil.showError(TextUtil.getText("error"), TextUtil.getText("factorsErrorMessage"));
-            return;
-        }
 
         final Button connectButton = new Button(TextUtil.getText("connectLabel"));
         connectButton.setOnAction(actionEvent -> {
